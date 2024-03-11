@@ -5,6 +5,7 @@ import React, {
   useState
 } from 'react'
 import { User } from '../class/user'
+import Success from '../components/form-response/Success'
 
 const CreateProviderValue = () => {
   const [formStep, setFormStep] = useState<number>(1)
@@ -36,6 +37,7 @@ const CreateProviderValue = () => {
     try {
       await mockSaveData()
       // ADD THANK YOU PAGE HERE
+      showThankYou()
       setUserData(new User())
       setFormStep(1)
       setIsLoading(false)
@@ -47,6 +49,11 @@ const CreateProviderValue = () => {
   const confirmForm = () => {
     setIsLoading(true)
     saveAndResetData()
+  }
+
+  const showThankYou = () => {
+    confirmForm()
+    return <Success />
   }
 
   const backToPreviousStep = () => {

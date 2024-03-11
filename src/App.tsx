@@ -4,8 +4,6 @@ import { FormContext } from './context/FormProvider'
 import FormNavBar from './components/form-nav-bar'
 import FormContent from './components/form-content'
 import FullPageLoader from './components/full-page-loader'
-import Success from './components/form-response/Success'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App () {
   const {
@@ -18,9 +16,6 @@ function App () {
   } = useContext(FormContext)
 
   return (
-    <Router>
-      <Routes>
-      <Route path='/' element={
         <div className="app">
         {isLoading && <FullPageLoader />}
         <FormNavBar currentStep={formStep} />
@@ -32,10 +27,6 @@ function App () {
           backToPreviousStep={backToPreviousStep}
         />
         </div>
-      }/>
-      <Route path='/success' element={<Success />} />
-      </Routes>
-    </Router>
   )
 }
 

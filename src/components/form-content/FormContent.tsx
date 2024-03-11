@@ -5,7 +5,6 @@ import Flex from '../../layout/flex'
 import Button from '../button'
 import Input from '../input'
 import * as Styled from './styles'
-import { useNavigate } from 'react-router-dom'
 
 interface FormContentProps {
   currentStep: number
@@ -18,7 +17,6 @@ interface FormContentProps {
 const FormContent: FunctionComponent<FormContentProps> = ({
   currentStep, updateUserData, userData, confirmForm, backToPreviousStep
 }: FormContentProps) => {
-  const navigate = useNavigate()
   const [localData, setLocalData] = useState(userData)
 
   useEffect(() => {
@@ -28,11 +26,6 @@ const FormContent: FunctionComponent<FormContentProps> = ({
   const submitForm = () => {
     console.log(currentStep)
     updateUserData(new User(localData))
-  }
-
-  const finalSubmission = () => {
-    confirmForm()
-    navigate('/success')
   }
 
   const updateField = (key: string, value: string) => {
@@ -110,7 +103,7 @@ const FormContent: FunctionComponent<FormContentProps> = ({
                 </Styled.LineParagraph>
               </Flex>
               <Button onClick={backToPreviousStep} invert id="form-confirmation-back-button">Back</Button>
-              <Button onClick={finalSubmission} id="form-confirmation-button">Confirm</Button>
+              <Button onClick={confirmForm} id="form-confirmation-button">Confirm</Button>
             </Flex>
                 )
               )}
