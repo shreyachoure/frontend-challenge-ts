@@ -52,7 +52,12 @@ test('Demo page is loaded', async ({ page }) => {
   await confirmButton.click();
 
   console.log('Complete form confirmation page');
+
   // ADD Form Thank you page test here
+  const submitAnotherButton = await page.locator('#form-redirect');
+  await submitAnotherButton.click();
+
+  console.log("Form redirected")
 
   // Back to form step 1 and form should be reset
   await page.waitForTimeout(3000);

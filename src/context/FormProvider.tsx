@@ -21,6 +21,7 @@ const CreateProviderValue = () => {
   }
 
   const updateUserData = (updatedUserData: User) => {
+    setFormStep(2)
     updateFormStep(updatedUserData)
     setUserData(updatedUserData)
   }
